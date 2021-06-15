@@ -1,0 +1,49 @@
+Example of creating a new functionality: BOOKMARK
+
+1. MODEL
+    - create a new array inside the state object called bookmarks
+    - create a new export function addBookmark and specify what it does:
+            - receives a recipe from Controller and push to the array 'bookmarks' in the State object
+            - add 'bookmarked: true' to 'state.recipe'
+
+2. CONTROLLER
+    - create a new controller called controlAddBookmark that calls addBookmark we just created in Model, passing the recipe that is being bookmarked.
+
+3. Decide when the controller controlAddBookmark should be called: when click on bookmark icon in the recipeView. Go to recipeView and create event listener.
+
+4. recipeView
+    - create an eventListener called addHandlerAddBookmark to listen to when the bookmark icon is clicked.
+    - the event listener has an handler that is the controller controlAddBookmark that we just created
+
+5. CONTROLLER
+    - call the event listener addHandlerAddBookmark we just created and add to the init function at the bottom, passing in the controller controlAddBookmark created earlier
+
+6. recipeView
+    - change the icon when the recipe is bookmarked in the _generateMarkup() function. Add the '-fill' class to the button
+
+7. CONTROLLER
+    - to update the icon to bookmarked, we need to UPDATE the recipeView. Add recipeView.update() inside controlAddBookmark, passing the recipe that is being bookmarked
+
+8. MODEL
+    - to keep the bookmarked icon active when reloading the page or navigating away and then coming back, before loading the recipe, we need to first check if the recipe has been bookmarked. Inside the loadRecipe function, we check if the recipe is inside the array state.bookmarks (created as first thing)
+
+9. MODEL
+    NOTE: it's like starting again from point 1.
+    - remove the bookmark with deleteBookmark function.
+
+10. CONTROLLER
+    - add bookmark conditions inside controlAddBookmark: if there's no bookmark, add. If there's a bookmark, remove.
+
+11. bookmarksView (popup)
+    - Create bookmarksView and copy/paste from resultsView as the code is the same. Just replaced class name, _parentElement and error message
+
+12. CONTROLLER
+    - add bookmarksView.render to the function controlAddBookmark to add the bookmarked recipes inside the bookmarks popup.
+    - add bookmarksView.update to update the highlight background for the current recipe
+
+13. previewView
+    - since we copied the code from resultsView and pasted in bookmarksView (which is bad), we create a previewView that is a parent class of both
+    - import previewView into both the child views
+
+14. VIEW
+    - we added 'render = true' and 'if(!render) return markup'
