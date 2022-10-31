@@ -15,7 +15,7 @@ export default class View {
    * @param {boolean} [render=true] If false, create markup string instead of rendering to the DOM. [] means optional, true is the default
    * @returns {undefined | string} A markup string is returned if render=false
    * @this {Object} View instance
-   * @author Jonas Schmedtmann
+   * @author Pat Racco
    * @todo Finish implementation
    */
 
